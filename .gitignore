@@ -1,4 +1,14 @@
+.gradle
+
+build
+
+**/logs/
+
+.settings
 bin
+.project*
+.classpath
+.idea/bin
 .project*
 .classpath
 .idea/
