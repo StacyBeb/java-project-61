@@ -8,3 +8,6 @@ https://asciinema.org/a/0dWPhObW3aXndSeZugZegqmPH
 
 Calc:
 https://asciinema.org/a/p0WS7JOgQSotWqUSv8LIOFaGl
+
+GCD
+https://asciinema.org/a/fae4pEAz3bOrzmBfFNJNKgnzA
