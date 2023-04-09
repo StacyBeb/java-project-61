@@ -1,35 +1,25 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
-public class Even {
-    public static void evenGame() {
+public class Engine {
+    public static void gameLogic(String startQuestion, String[] answer, String[] question) {
 
         var userName = greeting();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println(startQuestion);
         var i = 0;
         while (i < 3) {
-            String answer;
-            var max = 20;
-            var min = 1;
-            var range = max - min + 1;
-            int randNum = (int)(Math.random() * range) + min;
-            if (randNum % 2 == 0) {
-                answer = "yes";
-            } else {
-                answer = "no";
-            }
-
-            System.out.print("Question: " + randNum + "\n" +
+            System.out.print("Question: " + question[i] + "\n" +
                     "Your answer: ");
             String userAnswer = scanner.next();
-            if (userAnswer.equals(answer)) {
+            if (userAnswer.equals(answer[i])) {
                 System.out.println("Correct!");
                 i++;
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + answer + "'.\n" +
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + answer[i] + "'.\n" +
                         "Let's try again, " + userName + "!");
                 scanner.close();
                 return;
@@ -39,7 +29,7 @@ public class Even {
         scanner.close();
     }
 
-    public static String greeting() {
+    private static String greeting() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to the Brain Games!");
@@ -48,5 +38,23 @@ public class Even {
         System.out.println("Hello, " + userName + "!");
 
         return userName;
+    }
+
+    public static int getRandomNum() {
+        var max = 100;
+        var min = 1;
+        var range = max - min + 1;
+        int randNum = (int)(Math.random() * range) + min;
+
+        return randNum;
+    }
+
+    public static char getRandomSymbol() {
+        String symbols = "+-*";
+
+        Random symbol = new Random();
+        char c = symbols.charAt(symbol.nextInt(symbols.length()));
+
+        return c;
     }
 }
