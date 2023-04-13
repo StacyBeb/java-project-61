@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import javax.script.ScriptEngineManager;
-
 public class Calc {
     public static void calcGame() {
         String[] answer = new String[3];
