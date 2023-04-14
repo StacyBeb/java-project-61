@@ -14,14 +14,14 @@ public class GCD {
             var del = randNum1;
             while (del > 1) {
                 if (randNum1 % del == 0 && randNum2 % del == 0) {
-                    answer[i] = Integer.toString(del);
+                    answer[i] = String.valueOf(del);
                     break;
                 } else {
                     del--;
                 }
             }
             if (del == 1) {
-                answer[i] = Integer.toString(del);
+                answer[i] = String.valueOf(del);
             }
         }
 

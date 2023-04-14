@@ -23,8 +23,8 @@ public class Calc {
                     answerInt = randNum1 + randNum2;
                 }
             }
-            question[i] = "" + randNum1 + " " + symbol + " " + randNum2;
-            answer[i] = Integer.toString(answerInt);
+            question[i] = randNum1 + " " + symbol + " " + randNum2;
+            answer[i] = String.valueOf(answerInt);
         }
 
         Engine.gameLogic(startQuestion, answer, question);
