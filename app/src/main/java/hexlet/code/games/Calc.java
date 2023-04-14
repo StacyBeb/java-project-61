@@ -22,6 +22,9 @@ public class Calc {
                 case '+' -> {
                     answerInt = randNum1 + randNum2;
                 }
+                default -> {
+                    break;
+                }
             }
             question[i] = randNum1 + " " + symbol + " " + randNum2;
             answer[i] = String.valueOf(answerInt);

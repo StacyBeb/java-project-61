@@ -12,15 +12,19 @@ public class Engine {
         System.out.println(startQuestion);
         var i = 0;
         while (i < 3) {
-            System.out.print("Question: " + question[i] + "\n" +
-                    "Your answer: ");
+            System.out.print("Question: " + question[i] + "\n"
+                    + "Your answer: ");
             String userAnswer = scanner.next();
             if (userAnswer.equals(answer[i])) {
                 System.out.println("Correct!");
                 i++;
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + answer[i] + "'.\n" +
-                        "Let's try again, " + userName + "!");
+                System.out.println("'"
+                        + userAnswer
+                        + "' is wrong answer ;(. Correct answer was '"
+                        + answer[i]
+                        + "'.\n"
+                        + "Let's try again, " + userName + "!");
                 scanner.close();
                 return;
             }
@@ -44,14 +48,14 @@ public class Engine {
         var max = 100;
         var min = 1;
         var range = max - min + 1;
-        int randNum = (int)(Math.random() * range) + min;
+        int randNum = (int) (Math.random() * range) + min;
 
         return randNum;
     }
 
     public static int getRandomNum(int min, int max) {
         var range = max - min + 1;
-        int randNum = (int)(Math.random() * range) + min;
+        int randNum = (int) (Math.random() * range) + min;
 
         return randNum;
     }
