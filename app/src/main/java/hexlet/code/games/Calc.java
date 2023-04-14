@@ -4,13 +4,17 @@ import hexlet.code.Engine;
 
 public class Calc {
     public static void calcGame() {
+        final var maxRandomNum = 100;
+        final var minRandomNum = 1;
+
         var questionCount = 3;
+
         String[] answer = new String[questionCount];
         String[] question = new String[questionCount];
         var startQuestion = "What is the result of the expression?";
         for (var i = 0; i < questionCount; i++) {
-            int randNum1 = Engine.getRandomNum();
-            int randNum2 = Engine.getRandomNum();
+            int randNum1 = Engine.getRandomNum(minRandomNum, maxRandomNum);
+            int randNum2 = Engine.getRandomNum(minRandomNum, maxRandomNum);
             char symbol = Engine.getRandomSymbol();
             int answerInt = 0;
             switch (symbol) {

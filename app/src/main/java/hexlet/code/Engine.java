@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class Engine {
     public static void gameLogic(String startQuestion, String[] answer, String[] question) {
+        var questionCount = 3;
 
         var userName = greeting();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println(startQuestion);
         var i = 0;
-        var questionCount = 3;
+
         while (i < questionCount) {
             System.out.print("Question: " + question[i] + "\n"
                     + "Your answer: ");
@@ -43,15 +44,6 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
 
         return userName;
-    }
-
-    public static int getRandomNum() {
-        var max = 100;
-        var min = 1;
-        var range = max - min + 1;
-        int randNum = (int) (Math.random() * range) + min;
-
-        return randNum;
     }
 
     public static int getRandomNum(int min, int max) {
