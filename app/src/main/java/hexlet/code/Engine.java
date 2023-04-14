@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Engine {
     public static void gameLogic(String startQuestion, String[] answer, String[] question) {
-        var questionCount = 3;
+        final var questionCount = 3;
 
         var userName = greeting();
 

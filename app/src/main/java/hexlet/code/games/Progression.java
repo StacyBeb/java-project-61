@@ -8,8 +8,7 @@ public class Progression {
         final var maxStep = 7;
         final var maxProgressionLength = 10;
         final var minProgressionLength = 5;
-
-        var questionCount = 3;
+        final var questionCount = 3;
 
         String[] answer = new String[questionCount];
         String[] question = new String[questionCount];

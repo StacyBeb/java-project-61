@@ -6,8 +6,7 @@ public class Calc {
     public static void calcGame() {
         final var maxRandomNum = 100;
         final var minRandomNum = 1;
-
-        var questionCount = 3;
+        final var questionCount = 3;
 
         String[] answer = new String[questionCount];
         String[] question = new String[questionCount];
