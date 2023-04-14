@@ -3,10 +3,11 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 public class Progression {
     public static void progressionGame() {
-        String[] answer = new String[3];
-        String[] question = new String[3];
+        var questionCount = 3;
+        String[] answer = new String[questionCount];
+        String[] question = new String[questionCount];
         var startQuestion = "What number is missing in the progression?";
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < questionCount; i++) {
             int randomProgressionLength = Engine.getRandomNum(5, 10);
             int randomStep = Engine.getRandomNum(1, 7);
             int randomNum = Engine.getRandomNum();
