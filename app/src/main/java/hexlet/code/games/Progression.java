@@ -52,7 +52,7 @@ public class Progression {
             }
             randomProgressionLength--;
         }
-        roundAnswerAndQuestion[i] = Arrays.deepToString(progression);
+        roundAnswerAndQuestion[i] = Arrays.deepToString(progression).replace("," , "");
 
         return roundAnswerAndQuestion;
     }
