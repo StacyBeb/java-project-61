@@ -24,12 +24,19 @@ public class Even {
         int randNum = Utils.getRandomNum(minRandomNum, maxRandomNum);
         String[] roundAnswerAndQuestion = new String[Engine.answerCount];
         roundAnswerAndQuestion[i] = String.valueOf(randNum);
-        if (randNum % 2 == 0) {
-            roundAnswerAndQuestion[i + 1] = "yes";
-        } else {
-            roundAnswerAndQuestion[i + 1] = "no";
-        }
+        roundAnswerAndQuestion[i + 1] = getAnswer(randNum);
 
         return roundAnswerAndQuestion;
+    }
+
+    public static String getAnswer(int randNum) {
+        String answer = "";
+        if (randNum % 2 == 0) {
+            answer = "yes";
+        } else {
+            answer = "no";
+        }
+
+        return answer;
     }
 }

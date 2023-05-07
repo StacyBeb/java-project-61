@@ -35,25 +35,32 @@ public class Calc {
         int randNum1 = Utils.getRandomNum(minRandomNum, maxRandomNum);
         int randNum2 = Utils.getRandomNum(minRandomNum, maxRandomNum);
         char symbol = getRandomSymbol();
-        int answerInt = 0;
+  
+        String[] roundAnswerAndQuestion = new String[Engine.answerCount];
+
+        roundAnswerAndQuestion[i] = randNum1 + " " + symbol + " " + randNum2;
+        roundAnswerAndQuestion[i + 1] = getAnswer(randNum1, randNum2, symbol);
+        return roundAnswerAndQuestion;
+    }
+
+    public static String getAnswer(int randNum1, int randNum2, char symbol) {
+        String answer = "";
+
         switch (symbol) {
             case '*' -> {
-                answerInt = randNum1 * randNum2;
+                answer = String.valueOf(randNum1 * randNum2);
             }
             case '-' -> {
-                answerInt = randNum1 - randNum2;
+                answer = String.valueOf(randNum1 - randNum2);
             }
             case '+' -> {
-                answerInt = randNum1 + randNum2;
+                answer = String.valueOf(randNum1 + randNum2);
             }
             default -> {
                 break;
             }
         }
-        String[] roundAnswerAndQuestion = new String[Engine.answerCount];
 
-        roundAnswerAndQuestion[i] = randNum1 + " " + symbol + " " + randNum2;
-        roundAnswerAndQuestion[i + 1] = String.valueOf(answerInt);
-        return roundAnswerAndQuestion;
+        return answer;
     }
 }

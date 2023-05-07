@@ -25,19 +25,26 @@ public class Prime {
         String[] roundAnswerAndQuestion = new String[Engine.answerCount];
 
         roundAnswerAndQuestion[i] = String.valueOf(randNum);
+        roundAnswerAndQuestion[i + 1] = getAnswer(randNum);
+
+        return roundAnswerAndQuestion;
+    }
+
+    public static String getAnswer(int randNum) {
+        String answer = "";
         var del = randNum - 1;
         while (del > 1) {
             if (randNum % del == 0) {
-                roundAnswerAndQuestion[i + 1] = "no";
+                answer = "no";
                 break;
             } else {
                 del--;
             }
         }
         if (del == 1) {
-            roundAnswerAndQuestion[i + 1] = "yes";
+            answer = "yes";
         }
 
-        return roundAnswerAndQuestion;
+        return answer;
     }
 }

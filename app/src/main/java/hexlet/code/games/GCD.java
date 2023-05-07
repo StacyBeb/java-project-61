@@ -25,19 +25,26 @@ public class GCD {
         int randNum2 = Utils.getRandomNum(minRandomNum, maxRandomNum);
         String[] roundAnswerAndQuestion = new String[Engine.answerCount];
         roundAnswerAndQuestion[i] = randNum1 + " " + randNum2;
+        roundAnswerAndQuestion[i + 1] = getAnswer(randNum1, randNum2);
+
+        return roundAnswerAndQuestion;
+    }
+
+    public static String getAnswer(int randNum1, int randNum2) {
+        String answer = "";
         var del = randNum1;
         while (del > 1) {
             if (randNum1 % del == 0 && randNum2 % del == 0) {
-                roundAnswerAndQuestion[i + 1] = String.valueOf(del);
+                answer = String.valueOf(del);
                 break;
             } else {
                 del--;
             }
         }
         if (del == 1) {
-            roundAnswerAndQuestion[i + 1] = String.valueOf(del);
+            answer = String.valueOf(del);
         }
 
-        return roundAnswerAndQuestion;
+        return answer;
     }
 }
