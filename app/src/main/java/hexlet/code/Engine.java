@@ -1,41 +1,12 @@
 package hexlet.code;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static void gameLogic(String startQuestion, String[] answer, String[] question) {
-        final var questionCount = 3;
+    public static final int questionCount = 3;
+    public static final int answerCount = 2;
+    public static void gameLogic(String startQuestion, String[][] answerAndQuestion) {
 
-        var userName = greeting();
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(startQuestion);
-        var i = 0;
-
-        while (i < questionCount) {
-            System.out.print("Question: " + question[i] + "\n"
-                    + "Your answer: ");
-            String userAnswer = scanner.next();
-            if (userAnswer.equals(answer[i])) {
-                System.out.println("Correct!");
-                i++;
-            } else {
-                System.out.println("'"
-                        + userAnswer
-                        + "' is wrong answer ;(. Correct answer was '"
-                        + answer[i]
-                        + "'.\n"
-                        + "Let's try again, " + userName + "!");
-                scanner.close();
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + userName + "!");
-        scanner.close();
-    }
-
-    private static String greeting() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to the Brain Games!");
@@ -43,22 +14,29 @@ public class Engine {
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
-        return userName;
-    }
+        System.out.println(startQuestion);
+        var i = 0;
+        int j = 0;
 
-    public static int getRandomNum(int min, int max) {
-        var range = max - min + 1;
-        int randNum = (int) (Math.random() * range) + min;
+        while (i < questionCount) {
+            System.out.print("Question: " + answerAndQuestion[i][j] + "\n"
+                    + "Your answer: ");
+            String userAnswer = scanner.next();
+            if (!userAnswer.equals(answerAndQuestion[i][j + 1])) {
+                System.out.println("'"
+                        + userAnswer
+                        + "' is wrong answer ;(. Correct answer was '"
+                        + answerAndQuestion[i][j + 1]
+                        + "'.\n"
+                        + "Let's try again, " + userName + "!");
+                scanner.close();
+                return;
 
-        return randNum;
-    }
-
-    public static char getRandomSymbol() {
-        String symbols = "+-*";
-
-        Random symbol = new Random();
-        char c = symbols.charAt(symbol.nextInt(symbols.length()));
-
-        return c;
+            }
+            System.out.println("Correct!");
+            i++;
+        }
+        System.out.println("Congratulations, " + userName + "!");
+        scanner.close();
     }
 }

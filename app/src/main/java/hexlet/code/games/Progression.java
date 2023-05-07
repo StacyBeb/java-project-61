@@ -1,36 +1,59 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-public class Progression {
-    public static void progressionGame() {
-        final var maxRandomNum = 100;
-        final var minRandomNum = 1;
-        final var maxStep = 7;
-        final var maxProgressionLength = 10;
-        final var minProgressionLength = 5;
-        final var questionCount = 3;
+import hexlet.code.Utils;
 
-        String[] answer = new String[questionCount];
-        String[] question = new String[questionCount];
+import java.util.Arrays;
+
+public class Progression {
+    public static final int maxRandomNum = 100;
+    public static final int minRandomNum = 1;
+    public static final int maxStep = 7;
+    public static final int maxProgressionLength = 10;
+    public static final int minProgressionLength = 5;
+    public static void progressionGame() {
+        var i = 0;
+
+        String[][] answerAndQuestion = new String[Engine.questionCount][Engine.answerCount];
         var startQuestion = "What number is missing in the progression?";
-        for (var i = 0; i < questionCount; i++) {
-            int randomProgressionLength = Engine.getRandomNum(minProgressionLength, maxProgressionLength);
-            int randomStep = Engine.getRandomNum(1, maxStep);
-            int randomNum = Engine.getRandomNum(minRandomNum, maxRandomNum);
-            int randomHidePosition = Engine.getRandomNum(1, randomProgressionLength);
-            question[i] = String.valueOf(randomNum);
-            while (randomProgressionLength >= 0) {
-                randomNum = randomNum + randomStep;
-                if (randomHidePosition == randomProgressionLength) {
-                    answer[i] = String.valueOf(randomNum);
-                    question[i] = question[i] + " ..";
-                } else {
-                    question[i] = question[i] + " " + randomNum;
-                }
-                randomProgressionLength--;
-            }
+        for (var row: answerAndQuestion) {
+            var roundAnswerAndQuestion = generateRoundData(i);
+            row[i] = roundAnswerAndQuestion[i];
+            row[i + 1] = roundAnswerAndQuestion[i + 1];
         }
 
-        Engine.gameLogic(startQuestion, answer, question);
+        Engine.gameLogic(startQuestion, answerAndQuestion);
+    }
+
+    private static String[] getProgression(int progressionLength, int num, int step) {
+        String[] progression = new String[progressionLength];
+        var i = 0;
+        progression[i] = String.valueOf(num);
+        while (i < progressionLength - 1) {
+            i++;
+            num = num + step;
+            progression[i] = String.valueOf(num);
+        }
+        return progression;
+    }
+
+    public static String[] generateRoundData(int i) {
+        String[] roundAnswerAndQuestion = new String[Engine.answerCount];
+        int randomProgressionLength = Utils.getRandomNum(minProgressionLength, maxProgressionLength);
+        int randomStep = Utils.getRandomNum(1, maxStep);
+        int randomNum = Utils.getRandomNum(minRandomNum, maxRandomNum);
+        int randomHidePosition = Utils.getRandomNum(1, randomProgressionLength);
+
+        var progression = getProgression(randomProgressionLength, randomNum, randomStep);
+        while (randomProgressionLength >= 0) {
+            if (randomHidePosition == randomProgressionLength) {
+                roundAnswerAndQuestion[i + 1] = progression[randomHidePosition - 1];
+                progression[randomHidePosition - 1] = "..";
+            }
+            randomProgressionLength--;
+        }
+        roundAnswerAndQuestion[i] = Arrays.deepToString(progression);
+
+        return roundAnswerAndQuestion;
     }
 }
