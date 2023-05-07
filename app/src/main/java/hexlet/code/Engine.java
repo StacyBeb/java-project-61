@@ -3,8 +3,8 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static final int questionCount = 3;
-    public static final int answerCount = 2;
+    public static final int QuestionCount = 3;
+    public static final int AnswerCount = 2;
     public static void gameLogic(String startQuestion, String[][] answerAndQuestion) {
 
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class Engine {
         var i = 0;
         int j = 0;
 
-        while (i < questionCount) {
+        while (i < AnswerCount) {
             System.out.print("Question: " + answerAndQuestion[i][j] + "\n"
                     + "Your answer: ");
             String userAnswer = scanner.next();

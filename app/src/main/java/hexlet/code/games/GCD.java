@@ -4,12 +4,12 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
-    public static final int maxRandomNum = 100;
-    public static final int minRandomNum = 1;
+    public static final int MaxRandomNum = 100;
+    public static final int MinRandomNum = 1;
     public static void gcdGame() {
         int i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.questionCount][Engine.answerCount];
+        String[][] answerAndQuestion = new String[Engine.QuestionCount][Engine.AnswerCount];
         var startQuestion = "Find the greatest common divisor of given numbers.";
         for (var row: answerAndQuestion) {
             var roundAnswerAndQuestion = generateRoundData(i);
@@ -21,9 +21,9 @@ public class GCD {
     }
 
     public static String[] generateRoundData(int i) {
-        int randNum1 = Utils.getRandomNum(minRandomNum, maxRandomNum);
-        int randNum2 = Utils.getRandomNum(minRandomNum, maxRandomNum);
-        String[] roundAnswerAndQuestion = new String[Engine.answerCount];
+        int randNum1 = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
+        int randNum2 = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
+        String[] roundAnswerAndQuestion = new String[Engine.AnswerCount];
         roundAnswerAndQuestion[i] = randNum1 + " " + randNum2;
         roundAnswerAndQuestion[i + 1] = getAnswer(randNum1, randNum2);
 

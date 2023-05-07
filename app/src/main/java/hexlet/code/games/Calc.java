@@ -6,12 +6,12 @@ import hexlet.code.Utils;
 import java.util.Random;
 
 public class Calc {
-    public static final int maxRandomNum = 100;
-    public static final int minRandomNum = 1;
+    public static final int MaxRandomNum = 100;
+    public static final int MinRandomNum = 1;
     public static void calcGame() {
         var i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.questionCount][Engine.answerCount];
+        String[][] answerAndQuestion = new String[Engine.QuestionCount][Engine.AnswerCount];
         var startQuestion = "What is the result of the expression?";
         for (var row: answerAndQuestion) {
             var roundAnswerAndQuestion = generateRoundData(i);
@@ -32,11 +32,11 @@ public class Calc {
     }
 
     public static String[] generateRoundData(int i) {
-        int randNum1 = Utils.getRandomNum(minRandomNum, maxRandomNum);
-        int randNum2 = Utils.getRandomNum(minRandomNum, maxRandomNum);
+        int randNum1 = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
+        int randNum2 = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
         char symbol = getRandomSymbol();
-  
-        String[] roundAnswerAndQuestion = new String[Engine.answerCount];
+
+        String[] roundAnswerAndQuestion = new String[Engine.AnswerCount];
 
         roundAnswerAndQuestion[i] = randNum1 + " " + symbol + " " + randNum2;
         roundAnswerAndQuestion[i + 1] = getAnswer(randNum1, randNum2, symbol);
