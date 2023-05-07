@@ -4,12 +4,12 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
-    public static final int MaxRandomNum = 100;
-    public static final int MinRandomNum = 1;
+    public static final int MAX_RANDOM_NUM = 100;
+    public static final int MIN_RANDOM_NUM = 1;
     public static void evenGame() {
         int i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.QuestionCount][Engine.AnswerCount];
+        String[][] answerAndQuestion = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         for (var row: answerAndQuestion) {
             var roundAnswerAndQuestion = generateRoundData(i);
@@ -21,8 +21,8 @@ public class Even {
     }
 
     public static String[] generateRoundData(int i) {
-        int randNum = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
-        String[] roundAnswerAndQuestion = new String[Engine.AnswerCount];
+        int randNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
         roundAnswerAndQuestion[i] = String.valueOf(randNum);
         roundAnswerAndQuestion[i + 1] = getAnswer(randNum);
 

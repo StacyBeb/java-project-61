@@ -6,15 +6,15 @@ import hexlet.code.Utils;
 import java.util.Arrays;
 
 public class Progression {
-    public static final int MaxRandomNum = 100;
-    public static final int MinRandomNum = 1;
-    public static final int MaxStep = 7;
-    public static final int MaxProgressionLength = 10;
-    public static final int MinProgressionLength = 5;
+    public static final int MAX_RANDOM_NUM = 100;
+    public static final int MIN_RANDOM_NUM = 1;
+    public static final int MAX_STEP = 7;
+    public static final int MAX_PROGRESSION_LENGTH = 10;
+    public static final int MIN_PROGRESSION_LENGTH = 5;
     public static void progressionGame() {
         var i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.QuestionCount][Engine.AnswerCount];
+        String[][] answerAndQuestion = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "What number is missing in the progression?";
         for (var row: answerAndQuestion) {
             var roundAnswerAndQuestion = generateRoundData(i);
@@ -38,10 +38,10 @@ public class Progression {
     }
 
     public static String[] generateRoundData(int i) {
-        String[] roundAnswerAndQuestion = new String[Engine.AnswerCount];
-        int randomProgressionLength = Utils.getRandomNum(MinProgressionLength, MaxProgressionLength);
-        int randomStep = Utils.getRandomNum(1, MaxStep);
-        int randomNum = Utils.getRandomNum(MinRandomNum, MaxRandomNum);
+        String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
+        int randomProgressionLength = Utils.getRandomNum(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
+        int randomStep = Utils.getRandomNum(1, MAX_STEP);
+        int randomNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         int randomHidePosition = Utils.getRandomNum(1, randomProgressionLength);
 
         var progression = getProgression(randomProgressionLength, randomNum, randomStep);
