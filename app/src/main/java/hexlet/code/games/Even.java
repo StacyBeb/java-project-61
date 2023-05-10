@@ -11,7 +11,8 @@ public class Even {
         String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         for (var row: rules) {
-            row = generateRoundData();
+            row[0] = generateRoundData()[0];
+            row[1] = generateRoundData()[1];
         }
 
         Engine.gameLogic(startQuestion, rules);
