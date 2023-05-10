@@ -11,7 +11,9 @@ public class GCD {
         String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "Find the greatest common divisor of given numbers.";
         for (var row: rules) {
-            row = generateRoundData();
+            var roundAnswerAndQuestion = generateRoundData();
+            row[0] = roundAnswerAndQuestion[0];
+            row[1] = roundAnswerAndQuestion[1];
         }
 
         Engine.gameLogic(startQuestion, rules);

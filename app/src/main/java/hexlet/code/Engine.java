@@ -16,9 +16,9 @@ public class Engine {
 
         System.out.println(startQuestion);
 
-        for (var rule: rules) {
-            System.out.print("Question: " + rule[0] + "\n"
-                    + "Your answer: ");
+        for (String[] rule: rules) {
+            System.out.println("Question: " + rule[0]);
+            System.out.print("Your answer: ");
             String userAnswer = scanner.next();
             if (!userAnswer.equals(rule[1])) {
                 System.out.println("'" + userAnswer

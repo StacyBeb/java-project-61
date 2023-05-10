@@ -11,7 +11,9 @@ public class Prime {
         String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         for (var row: rules) {
-            row = generateRoundData();
+            var roundAnswerAndQuestion = generateRoundData();
+            row[0] = roundAnswerAndQuestion[0];
+            row[1] = roundAnswerAndQuestion[1];
         }
 
         Engine.gameLogic(startQuestion, rules);
