@@ -3,8 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Random;
-
 public class Calc {
     public static final int MAX_RANDOM_NUM = 100;
     public static final int MIN_RANDOM_NUM = 1;
