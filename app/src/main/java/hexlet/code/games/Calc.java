@@ -9,37 +9,25 @@ public class Calc {
     public static final int MAX_RANDOM_NUM = 100;
     public static final int MIN_RANDOM_NUM = 1;
     public static void calcGame() {
-        var i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
+        String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "What is the result of the expression?";
-        for (var row: answerAndQuestion) {
-            var roundAnswerAndQuestion = generateRoundData(i);
-            row[i] = roundAnswerAndQuestion[i];
-            row[i + 1] = roundAnswerAndQuestion[i + 1];
+        for (var row: rules) {
+            row = generateRoundData();
         }
 
-        Engine.gameLogic(startQuestion, answerAndQuestion);
+        Engine.gameLogic(startQuestion, rules);
     }
 
-    public static char getRandomSymbol() {
-        String symbols = "+-*";
-
-        Random symbol = new Random();
-        char c = symbols.charAt(symbol.nextInt(symbols.length()));
-
-        return c;
-    }
-
-    public static String[] generateRoundData(int i) {
+    public static String[] generateRoundData() {
         int randNum1 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         int randNum2 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-        char symbol = getRandomSymbol();
+        char symbol = Utils.getRandomSymbol();
 
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
 
-        roundAnswerAndQuestion[i] = randNum1 + " " + symbol + " " + randNum2;
-        roundAnswerAndQuestion[i + 1] = getAnswer(randNum1, randNum2, symbol);
+        roundAnswerAndQuestion[0] = randNum1 + " " + symbol + " " + randNum2;
+        roundAnswerAndQuestion[1] = getAnswer(randNum1, randNum2, symbol);
         return roundAnswerAndQuestion;
     }
 

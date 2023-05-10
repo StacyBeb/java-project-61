@@ -7,41 +7,41 @@ public class Prime {
     public static final int MAX_RANDOM_NUM = 100;
     public static final int MIN_RANDOM_NUM = 1;
     public static void primeGame() {
-        int i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
+        String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        for (var row: answerAndQuestion) {
-            var roundAnswerAndQuestion = generateRoundData(i);
-            row[i] = roundAnswerAndQuestion[i];
-            row[i + 1] = roundAnswerAndQuestion[i + 1];
+        for (var row: rules) {
+            row = generateRoundData();
         }
 
-        Engine.gameLogic(startQuestion, answerAndQuestion);
+        Engine.gameLogic(startQuestion, rules);
     }
 
-    public static String[] generateRoundData(int i) {
+    public static String[] generateRoundData() {
         int randNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
 
-        roundAnswerAndQuestion[i] = String.valueOf(randNum);
-        roundAnswerAndQuestion[i + 1] = getAnswer(randNum);
+        roundAnswerAndQuestion[0] = String.valueOf(randNum);
+        roundAnswerAndQuestion[1] = getAnswer(randNum);
 
         return roundAnswerAndQuestion;
     }
 
-    public static String getAnswer(int randNum) {
-        String answer = "";
-        var del = randNum - 1;
+    public static boolean isPrime(int num) {
+        var del = num - 1;
         while (del > 1) {
-            if (randNum % del == 0) {
-                answer = "no";
-                break;
+            if (num % del == 0) {
+                return false;
             } else {
                 del--;
             }
         }
-        if (del == 1) {
+        return true;
+    }
+
+    public static String getAnswer(int randNum) {
+        String answer = "no";
+        if (isPrime(randNum)) {
             answer = "yes";
         }
 

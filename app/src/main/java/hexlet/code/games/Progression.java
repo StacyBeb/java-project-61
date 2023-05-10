@@ -12,17 +12,14 @@ public class Progression {
     public static final int MAX_PROGRESSION_LENGTH = 10;
     public static final int MIN_PROGRESSION_LENGTH = 5;
     public static void progressionGame() {
-        var i = 0;
 
-        String[][] answerAndQuestion = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
+        String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "What number is missing in the progression?";
-        for (var row: answerAndQuestion) {
-            var roundAnswerAndQuestion = generateRoundData(i);
-            row[i] = roundAnswerAndQuestion[i];
-            row[i + 1] = roundAnswerAndQuestion[i + 1];
+        for (var row: rules) {
+            row = generateRoundData();
         }
 
-        Engine.gameLogic(startQuestion, answerAndQuestion);
+        Engine.gameLogic(startQuestion, rules);
     }
 
     private static String[] getProgression(int progressionLength, int num, int step) {
@@ -37,7 +34,7 @@ public class Progression {
         return progression;
     }
 
-    public static String[] generateRoundData(int i) {
+    public static String[] generateRoundData() {
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
         int randomProgressionLength = Utils.getRandomNum(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
         int randomStep = Utils.getRandomNum(1, MAX_STEP);
@@ -45,16 +42,12 @@ public class Progression {
         int randomHidePosition = Utils.getRandomNum(1, randomProgressionLength);
 
         var progression = getProgression(randomProgressionLength, randomNum, randomStep);
-        while (randomProgressionLength >= 0) {
-            if (randomHidePosition == randomProgressionLength) {
-                roundAnswerAndQuestion[i + 1] = progression[randomHidePosition - 1];
-                progression[randomHidePosition - 1] = "..";
-            }
-            randomProgressionLength--;
-        }
-        roundAnswerAndQuestion[i] = Arrays.toString(progression).replace(",", "");
-        roundAnswerAndQuestion[i] = roundAnswerAndQuestion[i].replace("[", "");
-        roundAnswerAndQuestion[i] = roundAnswerAndQuestion[i].replace("]", "");
+
+        roundAnswerAndQuestion[1] = progression[randomHidePosition - 1];
+        roundAnswerAndQuestion[0] = String.join(" ", progression);
+        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace(roundAnswerAndQuestion[1], "..");
+        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace("[", "");
+        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace("]", "");
 
         return roundAnswerAndQuestion;
     }
