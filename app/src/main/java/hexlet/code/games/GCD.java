@@ -20,8 +20,8 @@ public class GCD {
     }
 
     public static String[] generateRoundData() {
-        int randNum1 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-        int randNum2 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randNum1 = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randNum2 = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
         roundAnswerAndQuestion[0] = randNum1 + " " + randNum2;
         roundAnswerAndQuestion[1] = getAnswer(randNum1, randNum2);

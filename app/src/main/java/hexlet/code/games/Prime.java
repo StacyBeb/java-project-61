@@ -20,7 +20,7 @@ public class Prime {
     }
 
     public static String[] generateRoundData() {
-        int randNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randNum = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
 
         roundAnswerAndQuestion[0] = String.valueOf(randNum);
@@ -42,11 +42,6 @@ public class Prime {
     }
 
     public static String getAnswer(int randNum) {
-        String answer = "no";
-        if (isPrime(randNum)) {
-            answer = "yes";
-        }
-
-        return answer;
+        return isPrime(randNum) ? "yes" : "no";
     }
 }

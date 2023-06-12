@@ -36,18 +36,16 @@ public class Progression {
 
     public static String[] generateRoundData() {
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
-        int randomProgressionLength = Utils.getRandomNum(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
-        int randomStep = Utils.getRandomNum(1, MAX_STEP);
-        int randomNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-        int randomHidePosition = Utils.getRandomNum(1, randomProgressionLength);
+        int randomProgressionLength = Utils.getRandomNumber(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
+        int randomStep = Utils.getRandomNumber(1, MAX_STEP);
+        int randomNumber = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randomHidePosition = Utils.getRandomNumber(0, randomProgressionLength - 1);
 
-        var progression = getProgression(randomProgressionLength, randomNum, randomStep);
+        var progression = getProgression(randomProgressionLength, randomNumber, randomStep);
 
-        roundAnswerAndQuestion[1] = progression[randomHidePosition - 1];
+        roundAnswerAndQuestion[1] = progression[randomHidePosition];
+        progression[randomHidePosition] = "..";
         roundAnswerAndQuestion[0] = String.join(" ", progression);
-        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace(roundAnswerAndQuestion[1], "..");
-        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace("[", "");
-        roundAnswerAndQuestion[0] = roundAnswerAndQuestion[0].replace("]", "");
 
         return roundAnswerAndQuestion;
     }

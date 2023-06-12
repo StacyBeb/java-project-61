@@ -20,17 +20,15 @@ public class App {
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
-        String gameNum = scanner.next();
-        switch (gameNum) {
+        String gameNumber = scanner.next();
+        switch (gameNumber) {
             case "1" -> Cli.askName();
             case "2" -> Even.evenGame();
             case "3" -> Calc.calcGame();
             case "4" -> GCD.gcdGame();
             case "5" -> Progression.progressionGame();
             case "6" -> Prime.primeGame();
-            default -> {
-                break;
-            }
+            default -> throw new Error("Unknown game: " + gameNumber + "!");
         }
     }
 }

@@ -20,10 +20,10 @@ public class Even {
     }
 
     public static String[] generateRoundData() {
-        int randNum = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randomNumber = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
-        roundAnswerAndQuestion[0] = String.valueOf(randNum);
-        roundAnswerAndQuestion[1] = getAnswer(randNum);
+        roundAnswerAndQuestion[0] = String.valueOf(randomNumber);
+        roundAnswerAndQuestion[1] = getAnswer(randomNumber);
 
         System.out.println(roundAnswerAndQuestion);
 
@@ -34,14 +34,7 @@ public class Even {
         return num % 2 == 0 ? true : false;
     }
 
-    public static String getAnswer(int randNum) {
-        String answer = "";
-        if (isEven(randNum)) {
-            answer = "yes";
-        } else {
-            answer = "no";
-        }
-
-        return answer;
+    public static String getAnswer(int randomNumber) {
+        return isEven(randomNumber) ? "yes" : "no";
     }
 }

@@ -20,35 +20,34 @@ public class Calc {
     }
 
     public static String[] generateRoundData() {
-        int randNum1 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-        int randNum2 = Utils.getRandomNum(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-        char symbol = Utils.getRandomSymbol();
+        int randomNumber1 = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        int randomNumber2 = Utils.getRandomNumber(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
+        char symbol = getRandomSymbol();
 
         String[] roundAnswerAndQuestion = new String[Engine.ANSWER_COUNT];
 
-        roundAnswerAndQuestion[0] = randNum1 + " " + symbol + " " + randNum2;
-        roundAnswerAndQuestion[1] = getAnswer(randNum1, randNum2, symbol);
+        roundAnswerAndQuestion[0] = randomNumber1 + " " + symbol + " " + randomNumber2;
+        roundAnswerAndQuestion[1] = getAnswer(randomNumber1, randomNumber2, symbol);
         return roundAnswerAndQuestion;
     }
 
-    public static String getAnswer(int randNum1, int randNum2, char symbol) {
+    public static String getAnswer(int randomNumber1, int randomNumber2, char symbol) {
         String answer = "";
 
-        switch (symbol) {
-            case '*' -> {
-                answer = String.valueOf(randNum1 * randNum2);
-            }
-            case '-' -> {
-                answer = String.valueOf(randNum1 - randNum2);
-            }
-            case '+' -> {
-                answer = String.valueOf(randNum1 + randNum2);
-            }
-            default -> {
-                break;
-            }
-        }
+        return switch (symbol) {
+            case '*' -> String.valueOf(randomNumber1 * randomNumber2);
+            case '-' -> String.valueOf(randomNumber1 - randomNumber2);
+            case '+' -> String.valueOf(randomNumber1 + randomNumber2);
+            default ->
+                throw new Error("Unknown symbol: " + symbol + "!");
+        };
+    }
 
-        return answer;
+    public static char getRandomSymbol() {
+        String symbols = "+-*";
+
+        char c = symbols.charAt(Utils.getRandomNumber(0, symbols.length() - 1));
+
+        return c;
     }
 }
