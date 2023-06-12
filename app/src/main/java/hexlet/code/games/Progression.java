@@ -13,10 +13,8 @@ public class Progression {
 
         String[][] rules = new String[Engine.QUESTION_COUNT][Engine.ANSWER_COUNT];
         var startQuestion = "What number is missing in the progression?";
-        for (var row: rules) {
-            var roundAnswerAndQuestion = generateRoundData();
-            row[0] = roundAnswerAndQuestion[0];
-            row[1] = roundAnswerAndQuestion[1];
+        for (var i = 0; i < rules.length; i++) {
+            rules[i] = generateRoundData();
         }
 
         Engine.gameLogic(startQuestion, rules);
